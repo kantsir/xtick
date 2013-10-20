@@ -1,0 +1,16 @@
+= form_for [@ticket,@ticket_history], html: { class: 'form-horizontal' } do |f|
+  .control-group
+    = f.label :staff, class: 'control-label'
+    .controls
+      = f.collection_select(:staff_id, Staff.approved, :id, :name)
+  .control-group
+    = f.label :state, class: 'control-label'
+    .controls
+      = f.select :state, Ticket::State.hash_values.values, class: 'select optional'
+  .control-group
+    = f.label :resolution, class: 'control-label'
+    .controls
+      = f.text_area :resolution, class: 'text_area'
+  .form-actions
+    = f.submit nil, class: 'btn btn-primary'
+    = link_to t('.cancel', default: t('helpers.links.cancel')), ticket_ticket_histories_path(@ticket), class: 'btn'

@@ -1,0 +1,31 @@
+- model_class = Ticket
+.page-header
+  %h1=t '.title', default: model_class.model_name.human.pluralize.titleize
+
+- if sign_as_admin?
+  .dashboard
+    %ul.nav.nav-tabs
+      %li.active
+        %a{'data-target' => '#new', 'data-toggle' => 'tab', href: '#new_tickets'} New unassigned tickets
+      %li
+        %a{'data-target' => '#open', 'data-toggle' => 'tab', href: '#open_tickets'} Open Tickets
+      %li
+        %a{'data-target' => '#hold', 'data-toggle' => 'tab', href: '#hold_tickets'} On hold ticket
+      %li
+        %a{'data-target' => '#closed', 'data-toggle' => 'tab', href: '#closed_tickets'} Closed Tickets
+      %li
+        %a{'data-target' => '#searched', 'data-toggle' => 'tab', href: '#searched_tickets'} Searched
+    .tab-content
+      #new.tab-pane.active
+        = render partial: 'tickets/tab_ticket_table', locals: { tickets: Ticket.created, model_class: model_class }
+      #open.tab-pane
+        = render partial: 'tickets/tab_ticket_table', locals: { tickets: Ticket.open, model_class: model_class }
+      #hold.tab-pane
+        = render partial: 'tickets/tab_ticket_table', locals: { tickets: Ticket.hold, model_class: model_class }
+      #closed.tab-pane
+        = render partial: 'tickets/tab_ticket_table', locals: { tickets: Ticket.closed, model_class: model_class }
+      #searched.tab-pane
+        = render partial: 'tickets/tab_ticket_table', locals: { tickets: @tickets ||= [], model_class: model_class }
+
+For creation new ticket press button
+= link_to t('.new', default: t('helpers.links.new')), new_ticket_path, class: 'btn btn-primary'

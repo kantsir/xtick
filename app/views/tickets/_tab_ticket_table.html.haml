@@ -1,0 +1,28 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:id)
+      %th= model_class.human_attribute_name(:customer)
+      %th= model_class.human_attribute_name(:subject)
+      %th= model_class.human_attribute_name(:body)
+      %th= model_class.human_attribute_name(:state)
+      %th= model_class.human_attribute_name(:created_at)
+      %th=t '.actions', default: t('helpers.actions')
+  %tbody
+    - tickets.each do |ticket|
+      %tr
+        %td= link_to ticket.id, ticket_path(ticket)
+        %td
+          %span.label.label-success
+            = ticket.customer.email
+        %td= ticket.subject
+        %td= ticket.body
+        %td
+          %span.label.label-info
+            = ticket.state
+        %td=l ticket.created_at
+        %td
+          = link_to t('.history', default: t('helpers.links.history')), ticket_ticket_histories_path(ticket), class: 'btn btn-success'
+          = link_to t('.process', default: t('helpers.links.process')), new_ticket_ticket_history_path(ticket), class: 'btn btn-warning'
+          = link_to t('.edit', default: t('helpers.links.edit')), edit_ticket_path(ticket), class: 'btn btn-primary'
+          = link_to t('.destroy', default: t('helpers.links.destroy')), ticket_path(ticket), method: :delete, data: { confirm: t('.confirm', default: t('helpers.links.confirm', default: 'Are you sure?')) }, class: 'btn btn-danger'

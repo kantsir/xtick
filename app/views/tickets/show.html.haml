@@ -1,0 +1,20 @@
+- model_class = Ticket
+.page-header
+  %h1=t '.title', default: model_class.model_name.human.titleize
+
+%p
+  %strong= model_class.human_attribute_name(:subject) + ':'
+  %br
+  = @ticket.subject
+%p
+  %strong= model_class.human_attribute_name(:body) + ':'
+  %br
+  = @ticket.body
+%p
+  %strong= 'Send by :'
+  %br
+  = @ticket.customer.name + '; email:' + @ticket.customer.email
+
+
+.form-actions
+  = link_to t('.back', default: t('helpers.links.back')), tickets_path, class: 'btn btn-success'
