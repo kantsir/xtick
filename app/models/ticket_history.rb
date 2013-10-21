@@ -5,6 +5,9 @@ class TicketHistory < ActiveRecord::Base
 
   accepts_nested_attributes_for :ticket
 
+  validates :resolution, :staff, :state, :ticket, presence: true
+  validates :resolution, length: { minimum: 3,  maximum: 250 }
+
   def set_staff(user)
     self.staff = user.staff
   end

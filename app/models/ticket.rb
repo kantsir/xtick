@@ -6,6 +6,10 @@ class Ticket < ActiveRecord::Base
 
   has_many :ticket_histories
 
+  validates :subject, :body, :state, :link, presence: true
+  validates :subject, length: { minimum: 3,  maximum: 50 }
+  validates :body, length: { minimum: 1, maximum: 250 }
+
   scope :created, -> { where(state: State::hash_values[:waiting_for_staff]) }
   scope :open, -> { where(state: State::hash_values[:waiting_for_customer]) }
   scope :hold, -> { where(state: State::hash_values[:on_hold]) }
@@ -61,9 +65,9 @@ class Ticket < ActiveRecord::Base
 
   def generate_code
     value = ''
-    3.times{value  << (65 + rand(25)).chr}
+    3.times { value << (65 + rand(25)).chr }
     value << '-'
-    6.times{value  << (48+ rand(10)).chr}
+    6.times { value << (48+ rand(10)).chr }
     generate_code if Ticket.where(link: value).length != 0
     value
   end
