@@ -79,7 +79,7 @@
       <file leaf-file-name="x_tick_mailer.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/mailers/x_tick_mailer.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="28" column="20" selection-start="878" selection-end="878" vertical-scroll-proportion="0.63821137">
+            <state line="16" column="84" selection-start="583" selection-end="583" vertical-scroll-proportion="-0.09756097">
               <folding />
             </state>
           </provider>
@@ -183,10 +183,10 @@
         <option value="$PROJECT_DIR$/app/views/tickets/_tab_ticket_table.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/search_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/x_tick_mailer/user_approved.html.haml" />
-        <option value="$PROJECT_DIR$/app/mailers/x_tick_mailer.rb" />
         <option value="$PROJECT_DIR$/app/views/x_tick_mailer/user_access_denied.html.haml" />
         <option value="$PROJECT_DIR$/app/views/staffs/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/staffs_controller.rb" />
+        <option value="$PROJECT_DIR$/app/mailers/x_tick_mailer.rb" />
       </list>
     </option>
   </component>
@@ -1362,7 +1362,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/mailers/x_tick_mailer.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="28" column="20" selection-start="878" selection-end="878" vertical-scroll-proportion="0.63821137">
+        <state line="16" column="84" selection-start="583" selection-end="583" vertical-scroll-proportion="-0.09756097">
           <folding />
         </state>
       </provider>

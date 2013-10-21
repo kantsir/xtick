@@ -15,7 +15,7 @@ class XTickMailer < ActionMailer::Base
 
   def user_approved(staff)
     @staff = staff
-    @url = XTick::Application::XTickDomain::CURRENT_DOMAIN + "staffs/#{staff.id}/edit"
+    @url = XTick::Application::XTickDomain::CURRENT_DOMAIN + "/staffs/#{@staff.id}/edit"
     mail(to: @staff.user.email, subject: '[XTick]: Profile approved')
   end
 
