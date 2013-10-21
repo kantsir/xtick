@@ -35,7 +35,7 @@
                 %li= link_to 'Users', '/staffs'
               %form.navbar-form.navbar-left{role: 'search', method: 'post', action: '/'}
                 .form-group
-                  = tag(:input, :type => 'hidden', :name => request_forgery_protection_token.to_s, :value => form_authenticity_token)
+                  = tag(:input, type: 'hidden', name: request_forgery_protection_token.to_s, value: form_authenticity_token)
                   %input.form-control{placeholder: 'Search', type: 'text', name: 'search'}/
                 %button.btn.btn-default{type: 'submit'} Submit
 

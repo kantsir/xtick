@@ -1,7 +1,6 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:customer)
       %th= model_class.human_attribute_name(:link)
       %th= model_class.human_attribute_name(:subject)
@@ -12,7 +11,6 @@
   %tbody
     - tickets.each do |ticket|
       %tr
-        %td= link_to ticket.id, ticket_path(ticket)
         %td
           %span.label.label-success
             = ticket.customer.email

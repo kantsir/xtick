@@ -14,4 +14,10 @@ class TicketHistory < ActiveRecord::Base
     self.ticket = ticket
   end
 
+  def update_with_state(params)
+    self.ticket.state = params[:state]
+    self.update params
+    self.save
+  end
+
 end

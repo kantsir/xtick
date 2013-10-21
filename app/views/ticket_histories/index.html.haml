@@ -20,7 +20,6 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:staff_id)
       %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:resolution)
@@ -30,7 +29,6 @@
   %tbody
     - @ticket_histories.each do |ticket_history|
       %tr
-        %td= link_to ticket_history.id, ticket_ticket_history_path(@ticket,ticket_history)
         %td= ticket_history.staff_id
         %td= ticket_history.state
         %td= ticket_history.resolution

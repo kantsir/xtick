@@ -6,6 +6,10 @@
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
   = @staff.name
+%p
+  %strong= 'Email:'
+  %br
+  = @staff.user.email
 
 .form-actions
   = link_to t('.back', default: t('helpers.links.back')), staffs_path, class: 'btn'
