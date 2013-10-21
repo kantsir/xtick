@@ -12,6 +12,13 @@ class StaffsController < ApplicationController
   end
 
   def update
+    is_approved = staff_params[:approved]=='0' ? false : true
+
+    if is_approved != @staff.approved
+       XTickMailer.user_approved(@staff) if is_approved
+       XTickMailer.user_access_denied(@staff) unless is_approved
+    end
+
     return redirect_to staffs_path, notice: 'Profile was successfully updated.' if @staff.update(staff_params)
     render action: 'edit'
   end

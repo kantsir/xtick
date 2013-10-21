@@ -7,6 +7,7 @@
     %thead
       %tr
         %th= model_class.human_attribute_name(:name)
+        %th= 'Email'
         %th= model_class.human_attribute_name(:created_at)
         %th= model_class.human_attribute_name(:updated_at)
         %th= model_class.human_attribute_name(:approved)
@@ -15,6 +16,7 @@
       - @staffs.each do |staff|
         %tr
           %td= staff.name
+          %td= staff.user.email
           %td=l staff.created_at
           %td=l staff.updated_at
           %td
