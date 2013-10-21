@@ -13,21 +13,21 @@ class TicketHistoriesController < ApplicationController
 
   def new
     @ticket_history = TicketHistory.new
-    @ticket_history.staff = current_user.staff
+    @ticket_history.set_staff current_user
   end
 
   def create
     @ticket_history = TicketHistory.new(ticket_history_params)
-    @ticket.state = @ticket_history.state
-    @ticket_history.ticket = @ticket
-    is_saved = @ticket_history.save
-    XTickMailer.ticket_history_created(@ticket_history).deliver if is_saved
-    return redirect_to tickets_path, notice: 'Ticket history was successfully created.' if  is_saved
+    @ticket_history.set_ticket @ticket
+
+    XTickMailer.ticket_history_created(@ticket_history).deliver
+    return redirect_to tickets_path, notice: 'Ticket history was successfully created.' if  @ticket_history.save
     render action: 'new'
   end
 
   def customer_link
-    @ticket = Ticket.where(link: params[:customer_link]).first
+    @ticket = Ticket.get_by_unique_customer_link(params[:customer_link])
+
     return redirect_to tickets_path if @ticket.nil?
     @ticket_histories = @ticket.ticket_histories
     render 'ticket_histories/index'

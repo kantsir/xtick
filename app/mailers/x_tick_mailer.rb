@@ -13,15 +13,14 @@ class XTickMailer < ActionMailer::Base
     mail(to: @ticket.customer.email, subject: '[XTick]: Ticked updated')
   end
 
-  def user_approved(staff)
+  def user_access_change(staff, is_approved)
     @staff = staff
     @url = XTick::Application::XTickDomain::CURRENT_DOMAIN + "/staffs/#{@staff.id}/edit"
-    mail(to: @staff.user.email, subject: '[XTick]: Profile approved')
-  end
 
-  def user_access_denied(staff)
-    @staff = staff
-    mail(to: @staff.user.email, subject: '[XTick]: Access denied')
+    return if @staff.approved == is_approved
+
+    @access = is_approved
+    mail(to: @staff.user.email, subject: '[XTick]: Access changed')
   end
 
 

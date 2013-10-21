@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :staff
+
+  def create_staff_profile
+    self.staff = Staff.new(name: self.email)
+  end
+
 end

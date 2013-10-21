@@ -1,0 +1,9 @@
+%p
+  Hello #{@staff.name}!
+
+%p
+  - if @access
+    = 'Access to the system is open to your profile. You can'
+    =link_to 'edit your profile.', @url
+  - else
+    = 'Access denied for your profile.'

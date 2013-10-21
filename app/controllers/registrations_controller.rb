@@ -1,9 +1,9 @@
 class RegistrationsController < Devise::RegistrationsController
 
+  # override from Devise::RegistrationsController
   def create
     self.resource = build_resource(sign_up_params)
-
-    resource.staff = Staff.new(name: "Staff#{rand(666)}")
+    resource.create_staff_profile
 
     if resource.save
       if resource.active_for_authentication?

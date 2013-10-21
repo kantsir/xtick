@@ -4,7 +4,6 @@ class TicketsController < ApplicationController
   before_filter :authenticate_user!, except: [:new, :create, :index]
 
   def index
-    #@tickets = Ticket.all if current_user.present?
   end
 
   def show
@@ -12,8 +11,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
-    email = current_user.present? ? current_user.email : ''
-    @ticket.customer = Customer.new(email: email)
+    @ticket.auto_set_email_address current_user
   end
 
   def edit
@@ -21,18 +19,9 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
-    @ticket.state = Ticket::State.hash_values[:waiting_for_staff]
-
-    link = ''
-    begin
-      link = "customer#{rand(999999999999)}"
-    end while (Ticket.where(link: link).length != 0)
-    @ticket.link = link
-
-    is_saved = @ticket.save
-
-    XTickMailer.ticket_created(@ticket).deliver if is_saved
-    return redirect_to tickets_url, notice: 'Ticket was successfully created. Check your email.' if is_saved
+    @ticket.init_before_create
+    XTickMailer.ticket_created(@ticket).deliver
+    return redirect_to tickets_url, notice: 'Ticket was successfully created. Check your email.' if @ticket.save
     render action: :new
   end
 

@@ -31,9 +31,9 @@
     </data-source>
     <data-source source="LOCAL" name="Rails XTick: production" product="" version="" jdbc-version="" driver-name="" driver-version="" uuid="58133a26-c539-49f1-b2fb-f746e5fc46dc">
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://ec2-23-21-129-125.compute-1.amazonaws.com/dat6ntvsrnmdbd</jdbc-url>
-      <user-name>ccpbnodsgsbirj</user-name>
-      <user-password>df9fdf9edf99df98</user-password>
+      <jdbc-url>jdbc:mysql://127.0.0.1/XTick_production</jdbc-url>
+      <user-name>root</user-name>
+      <user-password>dfd8dfc5dfc5dfde</user-password>
       <libraries>
         <library>
           <url>file://$USER_HOME$/.RubyMine50/config/jdbc-drivers/mysql-connector-license.txt</url>
