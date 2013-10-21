@@ -9,7 +9,7 @@ class Ticket < ActiveRecord::Base
   scope :created, -> { where(state: State::hash_values[:waiting_for_staff]) }
   scope :open, -> { where(state: State::hash_values[:waiting_for_customer]) }
   scope :hold, -> { where(state: State::hash_values[:on_hold]) }
-  scope :closed, -> { where(state: State::hash_values[:completed]).where(state: State::hash_values[:canceled])  }
+  scope :closed, -> { where(state: [ State::hash_values[:completed], State::hash_values[:canceled] ]) }
 
   module State
 

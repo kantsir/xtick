@@ -3,6 +3,7 @@
     %tr
       %th= model_class.human_attribute_name(:id)
       %th= model_class.human_attribute_name(:customer)
+      %th= model_class.human_attribute_name(:link)
       %th= model_class.human_attribute_name(:subject)
       %th= model_class.human_attribute_name(:body)
       %th= model_class.human_attribute_name(:state)
@@ -15,6 +16,7 @@
         %td
           %span.label.label-success
             = ticket.customer.email
+        %td= ticket.link
         %td= ticket.subject
         %td= ticket.body
         %td

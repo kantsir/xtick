@@ -1,5 +1,5 @@
 class TicketHistoriesController < ApplicationController
-  before_action :set_ticket_history, only: [:show, :edit, :update, :destroy]
+  before_action :set_ticket_history, only: [:show, :edit]
   before_action :set_ticket, except: [:customer_link]
 
   before_filter :authenticate_user!, except: [:customer_link]

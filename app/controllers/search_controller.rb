@@ -9,7 +9,6 @@ class SearchController < ApplicationController
       link_matches = match_search_params tickets, :link, search
 
       @tickets = Ticket.where(body_matches.or(link_matches.or(subject_matches)))
-
       render 'tickets/index'
    end
 

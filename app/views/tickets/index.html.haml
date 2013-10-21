@@ -2,7 +2,7 @@
 .page-header
   %h1=t '.title', default: model_class.model_name.human.pluralize.titleize
 
-- if sign_as_admin?
+- if user_signed_in_and_approved?
   .dashboard
     %ul.nav.nav-tabs
       %li.active

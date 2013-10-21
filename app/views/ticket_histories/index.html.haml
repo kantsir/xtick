@@ -25,7 +25,7 @@
       %th= model_class.human_attribute_name(:state)
       %th= model_class.human_attribute_name(:resolution)
       %th= model_class.human_attribute_name(:created_at)
-      - if sign_as_admin?
+      - if user_signed_in_and_approved?
         %th=t '.actions', default: t('helpers.actions')
   %tbody
     - @ticket_histories.each do |ticket_history|
@@ -35,10 +35,10 @@
         %td= ticket_history.state
         %td= ticket_history.resolution
         %td=l ticket_history.created_at
-        - if sign_as_admin?
+        - if user_signed_in_and_approved?
           %td
             = link_to t('.edit', default: t('helpers.links.edit')), edit_ticket_ticket_history_path(@ticket,ticket_history), class: 'btn'
             = link_to t('.destroy', default: t('helpers.links.destroy')), ticket_ticket_history_path(@ticket,ticket_history), method: :delete, data: { confirm: t('.confirm', default:  t('helpers.links.confirm', default:  'Are you sure?')) }, class: 'btn btn-danger'
 
-- if sign_as_admin?
+- if user_signed_in_and_approved?
   = link_to t('.new', default: t('helpers.links.new')), new_ticket_ticket_history_path(@ticket), class: 'btn btn-primary'

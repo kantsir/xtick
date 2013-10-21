@@ -28,7 +28,7 @@
             %span.icon-bar
           %a.brand(href='/') XTick
           .container.nav-collapse
-            - if user_signed_in?
+            - if user_signed_in_and_approved?
               %ul.nav
                 %li= link_to 'Dashboard', '/tickets'
                 %li= link_to 'Profile', "/staffs/#{current_user.staff.id}"
